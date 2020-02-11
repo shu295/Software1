@@ -1,70 +1,69 @@
 #include<stdio.h>
-#include<string.h>//Ö»ÓĞÒ»¸ö±äÁ¿
+#include<string.h>//åªæœ‰ä¸€ä¸ªå˜é‡
 #include<math.h>
-char list[11][5]={"Áã","Ò»","¶ş","Èı","ËÄ","Îå","Áù","Æß","°Ë","¾Å","Ê®"}; //±ê¼Çºº×Ö
-int flag=0;
-int swap(char a[]){   //½«ºº×Ö×ª»»ÎªÊı×Ö
+char list[11][5]={"é›¶","ä¸€","äºŒ","ä¸‰","å››","äº”","å…­","ä¸ƒ","å…«","ä¹","å"}; //æ ‡è®°æ±‰å­—
+int flag=0,i;
+int swap(char a[]){   //å°†æ±‰å­—è½¬æ¢ä¸ºæ•°å­—
     int i;
     for(i=0;i<11;i++){
-        if(strcmp(list[i],a)==0){ //strcmpÅĞ¶ÏÊÇ·ñÏàµÈ
+        if(strcmp(list[i],a)==0){ //strcmpåˆ¤æ–­æ˜¯å¦ç›¸ç­‰
             return i;
         }
     }
 }
 
-int bai(char a[]){//ÈıÎ»ÊıµÄÊäÈë
+int bai(char a[]){//ä¸‰ä½æ•°çš„è¾“å…¥
 	char b[10],c[10],d[10];
 	if(strlen(a)==4){
 		b[0]=a[0];
 		b[1]=a[1];
 		b[2]='\0';
-		return swap(b)*100;//¶ÔÓ¦¼¸°ÙÀàĞÍµÄÊı×Ö
+		return swap(b)*100;//å¯¹åº”å‡ ç™¾ç±»å‹çš„æ•°å­—
 	}
 	else if(strlen(a)==6){
-		b[0]=a[4];//Ê®Î»
+		b[0]=a[4];//åä½
 		b[1]=a[5];
 		b[2]='\0';
-		c[0]=a[0];//°ÙÎ»
+		c[0]=a[0];//ç™¾ä½
 		c[1]=a[1];
 		c[2]='\0';
-		return swap(b)*10+swap(c)*100;//¶ÔÓ¦Ò»°Ù¼¸ÀàĞÍµÄÊı×Ö
+		return swap(b)*10+swap(c)*100;//å¯¹åº”ä¸€ç™¾å‡ ç±»å‹çš„æ•°å­—
 	}	
 	else if(strlen(a)==8){
-        b[0]=a[6];//¸öÎ»
+        b[0]=a[6];//ä¸ªä½
         b[1]=a[7];
         b[2]='\0';
-        c[0]=a[4];//Ê®Î»
+        c[0]=a[4];//åä½
         c[1]=a[5];
         c[2]='\0';
-		d[0]=a[0];//°ÙÎ»
+		d[0]=a[0];//ç™¾ä½
         d[1]=a[1];
         d[2]='\0';
 		if(swap(b)!=10) 
-			return swap(b)+swap(d)*100;//¶ÔÓ¦"Ò»°ÙÁã¼¸¡±ÀàĞÍµÄÊı×Ö
+			return swap(b)+swap(d)*100;//å¯¹åº”"ä¸€ç™¾é›¶å‡ â€ç±»å‹çš„æ•°å­—
 		else
-			return swap(d)*100+swap(c)*10;//¶ÔÓ¦"Ò»°Ù¼¸Ê®¡±ÀàĞÍµÄÊı×Ö
+			return swap(d)*100+swap(c)*10;//å¯¹åº”"ä¸€ç™¾å‡ åâ€ç±»å‹çš„æ•°å­—
     }
 	else if(strlen(a)==10){
-        b[0]=a[8];//¸öÎ»
+        b[0]=a[8];//ä¸ªä½
         b[1]=a[9];
         b[2]='\0';
-        c[0]=a[4];//Ê®Î»
+        c[0]=a[4];//åä½
         c[1]=a[5];
         c[2]='\0';
-		d[0]=a[0];//°ÙÎ»
+		d[0]=a[0];//ç™¾ä½
         d[1]=a[1];
         d[2]='\0';
-        return swap(b)+swap(c)*10+swap(d)*100;//¶ÔÓ¦¡°Ò»°Ù¼¸Ê®¼¸¡±ÀàĞÍµÄÊı×Ö
+        return swap(b)+swap(c)*10+swap(d)*100;//å¯¹åº”â€œä¸€ç™¾å‡ åå‡ â€ç±»å‹çš„æ•°å­—
 	}
 }
 
 
-int num(char a[]){//½«ºº×Ö·Ö¸î£¬ÔÙ×ª»»³ÉÊı×ÖµÄĞÎÊ½
+int num(char a[]){//å°†æ±‰å­—åˆ†å‰²ï¼Œå†è½¬æ¢æˆæ•°å­—çš„å½¢å¼
     char b[10],c[10],d[10];
-	char r[3]="°Ù",e[3]="Ê®";
-	int i;
-	if((a[2]==r[0])&&(a[3]==r[1]))//ÅĞ¶ÏÊäÈëÊÇ·ñÈıÎ»Êı°¡	
-		flag=1;//ÊÇ
+	char r[3]="ç™¾",e[3]="å";
+	if((a[2]==r[0])&&(a[3]==r[1]))//åˆ¤æ–­è¾“å…¥æ˜¯å¦ä¸‰ä½æ•°å•Š	
+		flag=1;//æ˜¯
 	else
 		flag=0;
 	if(flag==1){
@@ -72,168 +71,181 @@ int num(char a[]){//½«ºº×Ö·Ö¸î£¬ÔÙ×ª»»³ÉÊı×ÖµÄĞÎÊ½
 	}
 	else
 	{
-		if(strlen(a)==2){//Ò»¸öºº×ÖÓÃÁ½¸ö×Ö½Ú±íÊ¾
-			return swap(a); //¶ÔÓ¦ÁãÒ»¶şµÈµ¥¸öºº×Ö
+		if(strlen(a)==2){//ä¸€ä¸ªæ±‰å­—ç”¨ä¸¤ä¸ªå­—èŠ‚è¡¨ç¤º
+			return swap(a); //å¯¹åº”é›¶ä¸€äºŒç­‰å•ä¸ªæ±‰å­—
 		}
 		else if(strlen(a)==4){
 			b[0]=a[2];
 			b[1]=a[3];
 			b[2]='\0';      
-				if(swap(b)!=10) return 10+swap(b);//¶ÔÓ¦Ê®Ò»¡¢Ê®¶şµÈÒÔÊ®¿ªÍ·µÄÁ½¸öºº×Ö
+				if(swap(b)!=10) return 10+swap(b);//å¯¹åº”åä¸€ã€åäºŒç­‰ä»¥åå¼€å¤´çš„ä¸¤ä¸ªæ±‰å­—
 				else{
 					b[0]=a[0];
 					b[1]=a[1];
 					b[2]='\0';
-					return 10*swap(b);//¶ÔÓ¦¶şÊ®¡¢ÈıÊ®µÈÒÔÊ®½áÎ²µÄÊı×Ö
+					return 10*swap(b);//å¯¹åº”äºŒåã€ä¸‰åç­‰ä»¥åç»“å°¾çš„æ•°å­—
 				}
 		}
 		else if(strlen(a)==6){
-			b[0]=a[4];//¸öÎ»
+			b[0]=a[4];//ä¸ªä½
 			b[1]=a[5];
 			b[2]='\0';
-			c[0]=a[0];//Á½Î»ÊıµÄÊ®Î»£¬ÈıÎ»ÊıµÄ°ÙÎ»
+			c[0]=a[0];//ä¸¤ä½æ•°çš„åä½ï¼Œä¸‰ä½æ•°çš„ç™¾ä½
 			c[1]=a[1];
 			c[2]='\0';
-			d[0]=a[2];//ÈıÎ»ÊıµÄÊ®Î»
+			d[0]=a[2];//ä¸‰ä½æ•°çš„åä½
 			d[1]=a[3];
 			d[2]='\0';
-			for(i=0;i<strlen(a);i+=2){//ÅĞ¶ÏÊäÈëÊÇ·ñÈıÎ»Êı°¡
-				if((a[i]==e[0])&&(a[i+1]==e[1])){
-					return swap(b)+swap(c)*10;//¶ÔÓ¦¡°¼¸Ê®¼¸¡±ÀàĞÍµÄÊı×Ö
-				}
-				else
-					return swap(b)+swap(d)*10+swap(c)*100;//¶ÔÓ¦Ò»ÁãÁã£¬¶şËÄÈıµÈÀàĞÍµÄÊı×Ö
+			if((a[2]==e[0])&&(a[3]==e[1])){
+				return swap(b)+swap(c)*10;//å¯¹åº”â€œå‡ åå‡ â€ç±»å‹çš„æ•°å­—
 			}
+			else
+				return swap(b)+swap(d)*10+swap(c)*100;//å¯¹åº”ä¸€é›¶é›¶ï¼ŒäºŒå››ä¸‰ç­‰ç±»å‹çš„æ•°å­—
 		}	
 	}
 }
 
 
 
-int suan(int n,char a[],char b[]){//ÔËËã·ûºÅ
+int suan(int n,char a[],char b[]){//è¿ç®—ç¬¦å·
     int sum1;
-    sum1=num(b);//½«Êı×Ö¸³Öµ¸øsum1
-    if(strcmp(a,"Ôö¼Ó")==0) return n+sum1;
-    else if(strcmp(a,"¼õÉÙ")==0) return n-sum1;
-    else if(strcmp(a,"³Ë")==0) return n*sum1;
-    else if(strcmp(a,"³ıÒÔ")==0)return n/sum1;		
+    sum1=num(b);//å°†æ•°å­—èµ‹å€¼ç»™sum1
+    if(strcmp(a,"å¢åŠ ")==0) return n+sum1;
+    else if(strcmp(a,"å‡å°‘")==0) return n-sum1;
+    else if(strcmp(a,"ä¹˜")==0) return n*sum1;
+    else if(strcmp(a,"é™¤ä»¥")==0)return n/sum1;		
 }
 
 char kan(char a[],char m[]){
-	int i;
-	if(!strcmp(a,"¿´¿´")){
-		for(i=1;i<strlen(m)-2;i=i+2)
-			printf("%c%c",m[i],m[i+1]);
+	char s[3]="â€œ";
+	if(!strcmp(a,"çœ‹çœ‹")){
+		if(m[0]==s[0]&&m[1]==s[1])
+		{
+			for(i=2;i<strlen(m)-3;i=i+2)
+				printf("%c%c",m[i],m[i+1]);
+		}
+		else
+		{
+			for(i=1;i<strlen(m)-2;i=i+2)
+				printf("%c%c",m[i],m[i+1]);
+		}
 		printf("\n");
 		return 0;
 	}
 }
 
 char out(int sum){
-	if(sum>=0&&sum<=10){//Á½Î»ÊıÊä³ö
+	if(sum>=0&&sum<=10){//ä¸¤ä½æ•°è¾“å‡º
         printf("%s\n",list[sum]);
 	}
     else if(sum<=99){
         if(sum%10==0){
-            printf("%sÊ®\n",list[sum/10]);
+            printf("%så\n",list[sum/10]);
 			return 0;
 		}
         else if(sum<=19){
-            printf("Ê®%s\n",list[sum%10]);
+            printf("å%s\n",list[sum%10]);
 			return 0;
         }
         else {
-            printf("%sÊ®%s\n",list[sum/10],list[sum%10]);
+            printf("%så%s\n",list[sum/10],list[sum%10]);
 			return 0;
         }
     } 
 	else 
-		{//ÈıÎ»ÊıÊä³ö
+		{//ä¸‰ä½æ•°è¾“å‡º
 			flag=1;
             if(sum%100==0){
-                printf("%s°Ù\n",list[sum/100]);
+                printf("%sç™¾\n",list[sum/100]);
 				return 0;
 			}
             else if(sum%10==0){
-				printf("%s°Ù%sÊ®\n",list[sum/100],list[(sum/10)%10]);
+				printf("%sç™¾%så\n",list[sum/100],list[(sum/10)%10]);
 				return 0;
 			}
 			else if((sum/10)%10==0){
-				printf("%s°ÙÁã%s\n",list[sum/100],list[sum%10]);
+				printf("%sç™¾é›¶%s\n",list[sum/100],list[sum%10]);
 				return 0;
 			}
 			else{ 
-				printf("%s°Ù%sÊ®%s\n",list[sum/100],list[(sum/10)%10],list[sum%10]); 
+				printf("%sç™¾%så%s\n",list[sum/100],list[(sum/10)%10],list[sum%10]); 
 				return 0;
 			}
 		}   
 }
 
 int main(){
-    int i,sum,l,sum1,h;
+    int sum,l,sum1,h;
     char a[100],b[100],c[100],d[100],e[100],m[100],k[100],a1[100],c1[100];
-	char r[3]="µã",g[3]="¸º";
+	char r[3]="ç‚¹",g[3]="è´Ÿ",s[3]="â€œ";
 	a:scanf("%s",a);
 	while(1){
-			if(!strcmp(a,"ÕûÊı")||!strcmp(d,"ÕûÊı")){
-			memset(c, 0, sizeof (c)); 
-			scanf("%s %s %s",a,b,c);
-			if(strcmp(a,a1)!=0){//ÅĞ¶ÏÊÇ·ñÊÇĞÂ±äÁ¿  
-				h=1;
+			if(!strcmp(a,"çœ‹çœ‹"))
+			{	scanf("%s",b);
+				kan(a,b);
 			}
-			else
-				h=0;
-			for(i=0;i<strlen(c);i+=2){//ÅĞ¶ÏÊäÈëÊÇ·ñÎªÕûÊı
-				if((c[i]==r[0])&&(c[i+1]==r[1]))
-				{	printf("ÇëÊäÈëÕûÊıÅ¶£¬ÖØĞÂÊäÈë°É\n");
+			else{
+				if(!strcmp(a,"æ•´æ•°")||!strcmp(d,"æ•´æ•°")){
+					memset(c, 0, sizeof (c)); 
+					scanf("%s %s %s",a,b,c);
+					if(strcmp(a,a1)!=0){//åˆ¤æ–­æ˜¯å¦æ˜¯æ–°å˜é‡  
+						h=1;
+					}
+					else
+						h=0;
+					for(i=0;i<strlen(c);i+=2){//åˆ¤æ–­è¾“å…¥æ˜¯å¦ä¸ºæ•´æ•°
+						if((c[i]==r[0])&&(c[i+1]==r[1]))
+						{	printf("è¯·è¾“å…¥æ•´æ•°å“¦ï¼Œé‡æ–°è¾“å…¥å§\n");
+							goto a;
+						}
+						else if((c[i]==g[0])&&(c[i+1]==g[1]))//ä¸€å¼€å§‹è¾“å…¥ä¸ºè´Ÿæ•°
+						{
+							for(i=0;i<=strlen(c)-2;i++){
+								c[i]=c[i+2];
+							}
+							sum=-num(c);
+						}
+						else
+							sum=num(c);
+							
+					}
+				}
+				else{
+					printf("è¾“å…¥æ ¼å¼é”™è¯¯(è¾“å…¥æ ¼å¼ä¾‹ï¼šæ•´æ•°ï¼Œé’±åŒ…ï¼Œç­‰äºï¼Œå),è¯·é‡æ–°è¾“å…¥\n");
+					scanf("%s %s %s",a,b,c);
 					goto a;
 				}
-				else if((c[i]==g[0])&&(c[i+1]==g[1]))//Ò»¿ªÊ¼ÊäÈëÎª¸ºÊı
-				{
-					for(i=0;i<=strlen(c)-2;i++){
-						c[i]=c[i+2];
-					}
-					sum=-num(c);
-				}
-				else
-					sum=num(c);
-					
 			}
-		}
-		else{
-			printf("ÊäÈë¸ñÊ½´íÎó(ÊäÈë¸ñÊ½Àı£ºÕûÊı£¬Ç®°ü£¬µÈÓÚ£¬Ê®),ÇëÖØĞÂÊäÈë\n");
-			scanf("%s %s %s",a,b,c);
-			goto a;
-		}
-		printf("%d\n",sum);//²âÊÔµã£º£¨²âÊÔ×ª»»³ÉÊı×ÖÊÇ·ñÕıÈ·£©
-		k:while(scanf("%s",d)!=EOF){//ÅĞ¶ÏÊäÈëÊÇ·ñ½áÊø
-			  if(strcmp(a,d)==0){ //¿ÉÔÚÔËËã¹ı³ÌÖĞÖØ¸´ÔËÓÃ²é¿´¹¦ÄÜ
+		if(strcmp(a,"çœ‹çœ‹"))
+			printf("%d\n",sum);//æµ‹è¯•ç‚¹ï¼šï¼ˆæµ‹è¯•è½¬æ¢æˆæ•°å­—æ˜¯å¦æ­£ç¡®ï¼‰
+		k:while(scanf("%s",d)!=EOF){//åˆ¤æ–­è¾“å…¥æ˜¯å¦ç»“æŸ
+			  if(strcmp(a,d)==0){ //å¯åœ¨è¿ç®—è¿‡ç¨‹ä¸­é‡å¤è¿ç”¨æŸ¥çœ‹åŠŸèƒ½
 				  scanf("%s %s",b,c);
-				  if((strcmp(c,"Áã")==0)&&(strcmp(b,"³ıÒÔ")==0))
-					  printf("³ıÊı²»ÄÜÎªÁãÅ¶");
+				  if((strcmp(c,"é›¶")==0)&&(strcmp(b,"é™¤ä»¥")==0))
+					  printf("é™¤æ•°ä¸èƒ½ä¸ºé›¶å“¦");
 				  else
 				  {
 					  sum=suan(sum,b,c);
-					  printf("%d\n",sum);//²âÊÔµã£º²âÊÔsumÊÇ·ñÔËËãÕıÈ·  
+					  printf("%d\n",sum);//æµ‹è¯•ç‚¹ï¼šæµ‹è¯•sumæ˜¯å¦è¿ç®—æ­£ç¡®  
 				  }			 
 			  }
 			  else if(strcmp(a1,d)==0){
 				  scanf("%s %s",b,c);	
-				  if((strcmp(c,"Áã")==0)&&(strcmp(b,"³ıÒÔ")==0))
-					  printf("³ıÊı²»ÄÜÎªÁãÅ¶");
+				  if((strcmp(c,"é›¶")==0)&&(strcmp(b,"é™¤ä»¥")==0))
+					  printf("é™¤æ•°ä¸èƒ½ä¸ºé›¶å“¦");
 				  else
 				  {
 					  sum1=suan(sum1,b,c);
-					  printf("%d\n",sum1);//²âÊÔµã£º²âÊÔsumÊÇ·ñÔËËãÕıÈ·  
+					  printf("%d\n",sum1);//æµ‹è¯•ç‚¹ï¼šæµ‹è¯•sumæ˜¯å¦è¿ç®—æ­£ç¡®  
 				  }			 
 			  }
-			  else if(strcmp(d,"Èç¹û")==0)
+			  else if(strcmp(d,"å¦‚æœ")==0)
 			  {
 				  scanf("%s %s %s",b,e,m);
 				  l=num(m);
 				  if(strcmp(a,b)==0 || strcmp(a1,b)==0){
 					scanf("%s %s %s",d,b,m);
-					if(strcmp(e,"´óÓÚ")==0){
+					if(strcmp(e,"å¤§äº")==0){
 						if(sum>l|| sum1>l){
 							if(strcmp(a,b)==0){
 								scanf("%s",k);
@@ -254,12 +266,12 @@ int main(){
 						else{
 							if(strcmp(a,b)==0 || strcmp(a1,b)==0){
 								scanf("%s %s",d,b);
-								if((strcmp(d,"·ñÔò")==0)&&strcmp(b,"ÎŞ")!=0)
+								if((strcmp(d,"å¦åˆ™")==0)&&strcmp(b,"æ— ")!=0)
 									kan(b,m);
 							}
 							else{
 								scanf("%s %s %s",d,b,m);
-								if((strcmp(d,"·ñÔò")==0)&&strcmp(b,"ÎŞ")!=0)
+								if((strcmp(d,"å¦åˆ™")==0)&&strcmp(b,"æ— ")!=0)
 									kan(b,m);
 							}
 						}
@@ -285,52 +297,56 @@ int main(){
 						else{
 							if(strcmp(a,b)==0 || strcmp(a1,b)==0){
 								scanf("%s %s",d,b);
-								if((strcmp(d,"·ñÔò")==0)&&strcmp(b,"ÎŞ")!=0)
+								if((strcmp(d,"å¦åˆ™")==0)&&strcmp(b,"æ— ")!=0)
 									kan(b,m);
 							}
 							else{
 								scanf("%s %s %s",d,b,m);
-								if((strcmp(d,"·ñÔò")==0)&&strcmp(b,"ÎŞ")!=0)
+								if((strcmp(d,"å¦åˆ™")==0)&&strcmp(b,"æ— ")!=0)
 									kan(b,m);
 							}
 						}
 					}
 				}
 			  }
-			  else if(!strcmp(d,"¿´¿´")){
+			  else if(!strcmp(d,"çœ‹çœ‹")){
 				scanf("%s",b);
 				flag=0;
 				if(strcmp(b,a1)==0)
 				{
 					if(sum1<0)
-					{//¸ºÊıÊä³ö
-						printf("¸º");
+					{//è´Ÿæ•°è¾“å‡º
+						printf("è´Ÿ");
 						out(abs(sum1));
 					}
 					else
 						out(sum1);
 				}
-				else
+				else if(strcmp(b,a)==0)
 				{
 					if(sum<0)
-					{//¸ºÊıÊä³ö
-						printf("¸º");
+					{//è´Ÿæ•°è¾“å‡º
+						printf("è´Ÿ");
 						out(abs(sum));
 					}
 					else
 						out(sum);
 				}
+				else if((b[0]==s[0]&&b[0]==s[0])||(b[0]=='"'))
+					kan(d,b);
+				else
+					printf("æœªè®¾ç½®æ­¤å˜é‡\n");
 			}
-			  else if(!strcmp(d,"ÕûÊı"))
+			else if(!strcmp(d,"æ•´æ•°"))
 				break;
 		  }
 		  if(h==1){
-			for(i=0;i<strlen(a);i++)//±£´æ±äÁ¿
+			for(i=0;i<strlen(a);i++)//ä¿å­˜å˜é‡
 			{
 				a1[i]=a[i];	
 			}
-			a1[i]='\0';;
-			sum1=sum;//±£´æÊıÖµ
+			a1[i]='\0';
+			sum1=sum;//ä¿å­˜æ•°å€¼
 		  }		  
 }
 return 0;       
